@@ -21,7 +21,7 @@ window.SITE = {
    * Works with a backend endpoint, Formspree, or a Google Apps Script web app.
    * Empty = the survey still shows, but answers are not stored anywhere.
    */
-  feedbackEndpoint: '',
+  feedbackEndpoint: 'https://script.google.com/macros/s/AKfycbxAGjQqcvxR23uY9J_wKey2fhI-EdSK1gGJ58ev-rHfLsCPq7fXUph8DLsnvZSA411Ujg/exec',
 
   /** Shown on the welcome page. null = hidden. */
   welcomeOffer: null,
