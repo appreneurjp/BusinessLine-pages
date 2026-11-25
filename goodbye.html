@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sorry to see you go — 2nd Phone Number</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/icon.png" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="https://2ndline.biz/"><img src="assets/icon.png" alt="" />2nd Phone Number</a>
+      <nav><a data-href="supportUrl" href="#">Help</a></nav>
+    </header>
+
+    <main class="narrow">
+      <div class="bye-head">
+        <img src="assets/icon.png" alt="" />
+        <h1>Sorry to see you go</h1>
+        <p class="lead">2nd Phone Number has been removed from Chrome. Got 20 seconds? Tell us what didn't work and we'll fix it.</p>
+      </div>
+
+      <div class="card mistake">
+        <p><b>Removed it by mistake?</b> Reinstall in one click — your number and messages are still on your account.</p>
+        <a class="btn btn-ghost" data-href="storeUrl" href="#">Reinstall</a>
+      </div>
+
+      <div class="note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span>Removing the extension does not cancel a subscription or release your number. To stop billing, cancel from where you subscribed, or <a data-href="supportUrl" href="#">contact support</a>.</span>
+      </div>
+
+      <form class="card survey" id="survey">
+        <h2>Why did you uninstall?</h2>
+        <p class="sub">Pick the one that fits best.</p>
+        <div class="reasons">
+          <label class="reason"><input type="radio" name="reason" value="not-working" />It didn't work the way I expected</label>
+          <label class="reason"><input type="radio" name="reason" value="call-quality" />Call or text quality wasn't good enough</label>
+          <label class="reason"><input type="radio" name="reason" value="price" />It's too expensive</label>
+          <label class="reason"><input type="radio" name="reason" value="no-number" />I couldn't get the number I wanted</label>
+          <label class="reason"><input type="radio" name="reason" value="temporary" />I only needed it for a short time</label>
+          <label class="reason"><input type="radio" name="reason" value="other-app" />I'm using a different app</label>
+          <label class="reason"><input type="radio" name="reason" value="other" />Something else</label>
+        </div>
+        <textarea name="details" maxlength="1000" placeholder="Anything we could have done better? (optional)"></textarea>
+        <div class="survey-foot">
+          <span class="small">Anonymous — we don't see your email or number.</span>
+          <button class="btn btn-primary" type="submit" disabled>Send feedback</button>
+        </div>
+      </form>
+
+      <div class="card thanks" id="thanks" hidden>
+        <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h2>Thanks — that genuinely helps.</h2>
+        <p class="sub" id="thanks-body">Every answer is read by the team building the extension.</p>
+      </div>
+
+      <div class="offer goodbye-offer" id="offer" hidden>
+        <div style="position:relative">
+          <span class="eyebrow" data-o="eyebrow"></span>
+          <h2 data-o="title"></h2>
+          <p data-o="body"></p>
+          <div class="row">
+            <div class="code"><span data-o="code"></span><button type="button">Copy</button></div>
+            <a class="btn btn-white" data-href="storeUrl" href="#">Reinstall</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="narrow" style="margin-top:56px">
+      <span>© <span data-year></span> 2nd Phone Number</span>
+      <nav>
+        <a data-href="supportUrl" href="#">Support</a>
+        <a data-href="privacyUrl" href="#">Privacy</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="assets/site.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('survey');
+      const submit = form.querySelector('button[type="submit"]');
+      const offer = document.getElementById('offer');
+
+      form.addEventListener('change', () => (submit.disabled = !form.reason.value));
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const reason = form.reason.value;
+        const p = SL.params;
+        const installed = p.get('i');
+        const days = installed ? Math.max(0, Math.round((Date.now() - Date.parse(installed)) / 864e5)) : '';
+        const body = new URLSearchParams({
+          reason,
+          details: form.details.value.trim(),
+          version: p.get('v') || '',
+          installed: installed || '',
+          days_installed: String(days),
+          signed_in: p.get('s') || '',
+          submitted_at: new Date().toISOString(),
+        });
+
+        if (SL.cfg.feedbackEndpoint) {
+          // no-cors: fire-and-forget, so a slow or CORS-less endpoint never blocks the thank-you.
+          fetch(SL.cfg.feedbackEndpoint, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+        }
+
+        form.hidden = true;
+        document.getElementById('thanks').hidden = false;
+        if (reason === 'not-working' || reason === 'call-quality' || reason === 'no-number') {
+          const link = SL.cfg.supportUrl
+            ? ' If you\'d like, <a href="' + SL.cfg.supportUrl + '">tell support what happened</a> and we\'ll help you get it working.'
+            : '';
+          document.getElementById('thanks-body').innerHTML = 'Every answer is read by the team building the extension.' + link;
+        }
+        // Win-back offer: shown after the survey, never as a gate in front of it.
+        if (reason !== 'temporary') SL.renderOffer(offer, SL.cfg.winbackOffer);
+      });
+    })();
+  </script>
+</body>
+</html>
