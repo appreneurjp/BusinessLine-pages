@@ -1,3 +1,5 @@
+/** @OnlyCurrentDoc */
+
 /**
  * Google Apps Script: receives the uninstall survey (goodbye.html) and appends
  * one row per answer to the sheet this script is attached to.
