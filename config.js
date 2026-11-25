@@ -37,9 +37,9 @@ window.SITE = {
   winbackOffer: null,
   // winbackOffer: {
   //   eyebrow: 'Before you go',
-  //   title: 'Come back for 50% off a month',
+  //   title: 'Come back for 20% off a month',
   //   body: 'Reinstall, sign in, and use this code when you renew. Valid for 7 days.',
-  //   code: 'COMEBACK50',
+  //   code: 'COMEBACK20',
   // },
 };
 
@@ -54,8 +54,8 @@ window.SITE_DEMO_OFFERS = {
   },
   winbackOffer: {
     eyebrow: 'Before you go',
-    title: 'Come back for 50% off a month',
+    title: 'Come back for 20% off a month',
     body: 'Reinstall, sign in, and use this code when you renew. Valid for 7 days.',
-    code: 'COMEBACK50',
+    code: 'COMEBACK20',
   },
 };
