@@ -23,15 +23,8 @@ window.SITE = {
    */
   feedbackEndpoint: 'https://script.google.com/macros/s/AKfycbxAGjQqcvxR23uY9J_wKey2fhI-EdSK1gGJ58ev-rHfLsCPq7fXUph8DLsnvZSA411Ujg/exec',
 
-  /** Shown on the welcome page. null = hidden. */
+  /** No welcome offer (decided 2026-11-25). The page hides the block when null. */
   welcomeOffer: null,
-  // welcomeOffer: {
-  //   eyebrow: 'New-user offer',
-  //   title: '20% off your first month',
-  //   body: 'Pick your number in the next 48 hours and the discount is applied at checkout.',
-  //   code: 'WELCOME20',
-  //   expiresHours: 48,
-  // },
 
   /** Shown on the uninstall page after the survey. null = hidden. */
   winbackOffer: null,
@@ -45,13 +38,6 @@ window.SITE = {
 
 /** Sample offers for ?demo=1 previews only. */
 window.SITE_DEMO_OFFERS = {
-  welcomeOffer: {
-    eyebrow: 'New-user offer',
-    title: '20% off your first month',
-    body: 'Pick your number in the next 48 hours and the discount is applied at checkout.',
-    code: 'WELCOME20',
-    expiresHours: 48,
-  },
   winbackOffer: {
     eyebrow: 'Before you go',
     title: 'Come back for 20% off a month',
