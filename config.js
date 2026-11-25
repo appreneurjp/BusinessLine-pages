@@ -27,21 +27,14 @@ window.SITE = {
   welcomeOffer: null,
 
   /** Shown on the uninstall page after the survey. null = hidden. */
-  winbackOffer: null,
-  // winbackOffer: {
-  //   eyebrow: 'Before you go',
-  //   title: 'Come back for 20% off a month',
-  //   body: 'Reinstall, sign in, and use this code when you renew. Valid for 7 days.',
-  //   code: 'COMEBACK20',
-  // },
-};
-
-/** Sample offers for ?demo=1 previews only. */
-window.SITE_DEMO_OFFERS = {
+  /** COMEBACK20: 20%, no expiry, one use per account (Razorpay). */
   winbackOffer: {
     eyebrow: 'Before you go',
-    title: 'Come back for 20% off a month',
-    body: 'Reinstall, sign in, and use this code when you renew. Valid for 7 days.',
+    title: 'Come back for 20% off',
+    body: 'Reinstall, sign in, and enter this code at checkout. One use per account.',
     code: 'COMEBACK20',
   },
 };
+
+/** Sample offers for ?demo=1 previews only. */
+window.SITE_DEMO_OFFERS = {};
