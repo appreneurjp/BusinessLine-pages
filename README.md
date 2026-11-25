@@ -1,4 +1,4 @@
-# 2nd Phone Number — extension lifecycle pages
+# 2nd Phone Number: Talk Plus — extension lifecycle pages
 
 Static pages the Chrome extension opens on its own:
 
@@ -18,6 +18,6 @@ carries `i=<install date>` and `s=<1 if signed in>`. No personal data.
 - New release notes: add an `<article>` at the top of `whats-new.html`.
 - Survey answers → Google Sheet: see `feedback-sheet.gs`.
 
-Hosted on GitHub Pages from this repo. When 2ndline.biz is available, move the
+Hosted on GitHub Pages from this repo. When the 2ndline.biz domain is available, move the
 pages there, ship an extension update with the new `VITE_SITE_URL`, and keep this
 site up (or redirecting) — older installs keep the old uninstall URL until they update.

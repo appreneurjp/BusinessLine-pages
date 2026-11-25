@@ -6,7 +6,7 @@
  * Open any page with ?demo=1 to preview the offer blocks with sample copy.
  */
 window.SITE = {
-  name: '2nd Phone Number',
+  name: '2nd Phone Number: Talk Plus',
 
   /** Chrome Web Store listing. ID is derived from the manifest key, so it is final. */
   storeUrl: 'https://chromewebstore.google.com/detail/mggmfkbobbjficamblneljkabfmomfjd',

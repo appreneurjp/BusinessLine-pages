@@ -3,7 +3,7 @@
  * one row per answer to the sheet this script is attached to.
  *
  * Setup (once):
- *  1. Create a Google Sheet, e.g. "2nd Phone Number — uninstall feedback".
+ *  1. Create a Google Sheet, e.g. "2nd Phone Number: Talk Plus — uninstall feedback".
  *  2. Extensions -> Apps Script. Replace the code with this file. Save.
  *  3. Deploy -> New deployment -> type "Web app".
  *       Execute as: Me      Who has access: Anyone
